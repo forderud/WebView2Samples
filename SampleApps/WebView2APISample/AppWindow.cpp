@@ -810,6 +810,12 @@ void AppWindow::InitializeWebView()
     if (!m_language.empty())
         CHECK_FAILURE(options->put_Language(m_language.c_str()));
 
+    // make WebView2 low integrity level (IL) compatible (no longer needed)
+    //CHECK_FAILURE(options->put_AdditionalBrowserArguments(L"--disable-features=msSmartScreenProtection"));
+
+    // can also start WebView2APISample.exe with --userdirectoryfolder=%LOCALAPPDATA%Low\Temp argument
+    m_userDataFolder = L"C:\\Users\\forde\\AppData\\LocalLow\\Temp";
+
     HRESULT hr = CreateCoreWebView2EnvironmentWithOptions(
         subFolder, m_userDataFolder.c_str(), options.Get(),
         Callback<ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler>(
