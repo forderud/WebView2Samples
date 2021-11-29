@@ -14,6 +14,13 @@ namespace WebView2WindowsFormsBrowser
         public BrowserForm()
         {
             InitializeComponent();
+
+            var env = Microsoft.Web.WebView2.Core.CoreWebView2Environment.CreateAsync(
+                    browserExecutableFolder: null,
+                    userDataFolder: Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"Low\Temp", // LocalLow folder
+                    options: null).Result;
+            var task = webView2Control.EnsureCoreWebView2Async(env);
+
             AttachControlEventHandlers(this.webView2Control);
             HandleResize();
         }
