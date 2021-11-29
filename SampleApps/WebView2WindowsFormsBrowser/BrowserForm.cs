@@ -6,6 +6,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Web.WebView2.Core;
+using Microsoft.Web.WebView2.WinForms;
 
 namespace WebView2WindowsFormsBrowser
 {
@@ -14,6 +15,11 @@ namespace WebView2WindowsFormsBrowser
         public BrowserForm()
         {
             InitializeComponent();
+
+            var props = new CoreWebView2CreationProperties();
+            props.UserDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"Low\Temp"; // LocalLow folder
+            webView2Control.CreationProperties = props;
+
             AttachControlEventHandlers(this.webView2Control);
             HandleResize();
         }

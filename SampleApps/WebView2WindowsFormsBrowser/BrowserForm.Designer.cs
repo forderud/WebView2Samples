@@ -256,7 +256,6 @@ namespace WebView2WindowsFormsBrowser
             this.webView2Control.Location = new System.Drawing.Point(0, 96);
             this.webView2Control.Name = "webView2Control";
             this.webView2Control.Size = new System.Drawing.Size(788, 410);
-            this.webView2Control.Source = new Uri("https://www.bing.com/");
             this.webView2Control.TabIndex = 7;
             //
             // BrowserForm
